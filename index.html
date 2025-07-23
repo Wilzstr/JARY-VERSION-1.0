@@ -2,306 +2,211 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>WEB BUG JARY 070</title>
+  <title>WEB JARY</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      color: white;
-    }
-
-    /* Background login & halaman utama */
-    .login-screen, body.main {
-      background: url('https://files.catbox.moe/aa5j7h.jpg') no-repeat center center fixed;
+      background: url('https://files.catbox.moe/dhjejn.jpg') no-repeat center center fixed;
       background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
     }
-
-    .login-screen {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
+    .container {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      margin: auto;
+      border-radius: 15px;
+      max-width: 400px;
     }
-
-    .login-box {
-      background: rgba(0, 0, 0, 0.75);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px #a955ff;
-      max-width: 300px;
+    input, button {
       width: 90%;
-    }
-
-    .login-box h2 {
-      font-size: 14px;
-      margin-bottom: 15px;
-      text-shadow: 1px 1px black;
-    }
-
-    .login-box input {
-      padding: 8px;
-      width: 90%;
-      font-size: 12px;
-      border-radius: 6px;
+      padding: 10px;
+      margin: 8px 0;
+      font-size: 16px;
       border: none;
-      margin-bottom: 12px;
-      background-color: #2c0059;
-      color: white;
+      border-radius: 10px;
     }
-
-    .login-box button {
-      padding: 8px 15px;
-      background-color: #9b30ff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .login-box .owner-link {
-      display: inline-block;
-      margin-top: 12px;
-      text-decoration: none;
-      background: #ff0077;
-      color: white;
-      padding: 7px 15px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    .note {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 8px;
-      border-radius: 8px;
-      margin: 15px;
-      font-size: 11px;
-      color: #ff4444;
-      font-weight: bold;
-    }
-
-    .profile-img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #fff;
-      margin-top: 5px;
-    }
-
-    h2 {
-      font-size: 14px;
-      margin: 10px 0;
-      text-shadow: 1px 1px #000;
-    }
-
-    input {
-      padding: 7px;
-      width: 85%;
-      max-width: 250px;
-      font-size: 11px;
-      margin: 10px 0;
-      border-radius: 6px;
-      border: none;
-      background-color: #2c0059;
-      color: white;
-    }
-
-    .btn {
-      padding: 8px 15px;
-      margin: 5px;
-      font-size: 11px;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .slow { background-color: #4caf50; color: white; }
-    .hard { background-color: #f44336; color: white; }
-
-    #status {
-      margin-top: 15px;
-      font-size: 12px;
-      color: #00ff00;
-      display: none;
-      font-weight: bold;
-    }
-
-    #info-jeda {
-      margin-top: 10px;
-      font-size: 11px;
-      color: yellow;
-      font-weight: bold;
-      display: none;
-      text-shadow: 1px 1px black;
-    }
-
-    .footer {
-      margin-top: 25px;
-      font-size: 9px;
-      color: #ffffff88;
-      text-shadow: 1px 1px #000;
-    }
-
-    .section {
-      margin-top: 20px;
-    }
-
-    .section h3 {
-      margin-bottom: 5px;
-      font-size: 11px;
-      color: #fff;
-      text-shadow: 1px 1px #000;
-    }
-
-    .sosmed-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 5px;
-    }
-
-    .purple-btn {
-      background-color: #9b30ff;
-      color: white;
-      text-decoration: none;
-      padding: 8px 14px;
-      font-size: 11px;
-      font-weight: bold;
-      border-radius: 6px;
-      display: inline-block;
-    }
+    .purple-btn { background-color: purple; color: white; }
+    .red-btn { background-color: red; color: white; }
+    .green-btn { background-color: green; color: white; }
+    .btn { cursor: pointer; }
+    .note { font-size: 14px; margin-top: 10px; color: #fdd; }
   </style>
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
-<div class="login-screen" id="loginScreen">
-  <div class="login-box">
-    <h2>MASUKAN PASSWORD YANG DI BERIKAN JARY070</h2>
-    <input type="password" id="passwordInput" placeholder="Password">
-    <br>
-    <button onclick="checkPassword()">MASUK</button>
-    <br>
-    <a class="owner-link" href="https://t.me/JaryIsHereu" target="_blank">BUY AKSES CHAT OWNER</a>
-  </div>
+<!-- LOGIN -->
+<div class="container" id="loginForm">
+  <h2>MASUKAN PW DAN USER!!</h2>
+  <input type="text" id="loginUser" placeholder="Username">
+  <input type="password" id="loginPass" placeholder="Password">
+  <button class="green-btn" onclick="cekLogin()">LOGIN</button>
 </div>
 
-<!-- MAIN CONTENT -->
-<div id="mainContent" style="display: none;">
-  <div class="note">
-    NOTE: JIKA LU BERUSAHA MASUK TANPA SEPENGATAHUAN JARY<br>
-    GW SUMPAHIN HP LU BAKAL GW RETAS!!!
-  </div>
+<!-- MENU UTAMA -->
+<div class="container" id="mainMenu" style="display:none;">
+  <h2>WELCOME BUYEER💥</h2>
+  <input type="text" id="target" placeholder="Masukkan No Target">
+  <button class="purple-btn btn" onclick="kirimBug('BUG IP')">BUG IP</button>
+  <button class="purple-btn btn" onclick="kirimBug('BUG DELAY')">BUG DELAY</button>
+  <button class="purple-btn btn" onclick="kirimBug('BUG CRAS UI')">BUG CRAS UI</button>
+  <p class="note">Sebelum mencet DDOS MENU wajib kirim panel target unli!</p>
+  <button class="red-btn btn" onclick="kirimDDOS()">DDOS MENU</button>
+  <br><br>
+  <button class="green-btn btn" onclick="askAdminPw()">KHUSUS ADMIN</button>
+  <button class="purple-btn btn" onclick="askDevPw()">DEVELOPER</button>
+</div>
 
-  <img src="https://files.catbox.moe/3q1hry.jpg" class="profile-img" alt="Profil Jary">
-  <h2>WEB BUG JARY 070</h2>
+<!-- ADMIN MENU -->
+<div class="container" id="adminMenu" style="display:none;">
+  <h2>WELCOME ADMINGANTENG</h2>
+  <input type="text" id="adminUsername" placeholder="Masukkan Username">
+  <input type="text" id="adminPassword" placeholder="Masukkan Password">
+  <input type="text" id="adminWaktu" placeholder="Masukkan Waktu">
+  <button class="green-btn btn" onclick="createUser('ADMIN')">CREAT</button>
+</div>
 
-  <input type="text" id="target" placeholder="MASUKAN NO TARGET AWALAN 62XXX" />
+<!-- DEVELOPER MENU -->
+<div class="container" id="devMenu" style="display:none;">
+  <h2>DEVELOPER PANEL</h2>
 
-  <div>
-    <button class="btn slow" onclick="kirim('SLOW')">SLOW</button>
-    <button class="btn hard" onclick="kirim('HARD')">HARD</button>
-  </div>
+  <h4>CREAT USER</h4>
+  <input type="text" id="devUser" placeholder="Masukkan Nama">
+  <input type="text" id="devPass" placeholder="Masukkan Password">
+  <input type="text" id="devTime" placeholder="Masukkan Waktu">
+  <button class="green-btn btn" onclick="createUser('USER')">CREAT USER</button>
 
-  <div id="status">✅ Berhasil dikirim ke bot Telegram!</div>
-  <div id="info-jeda">⚠️ BUG BERHASIL DIKIRIM - INGAT JEDA 5 MNIT ⚠️</div>
+  <h4>CREAT ADMIN</h4>
+  <input type="text" id="devAdmin" placeholder="Masukkan Nama">
+  <input type="text" id="devAdminPass" placeholder="Masukkan Password">
+  <input type="text" id="devAdminTime" placeholder="Masukkan Waktu">
+  <button class="green-btn btn" onclick="createUser('CREATADMIN')">CREAT ADMIN</button>
 
-  <div class="section">
-    <h3>CONTACT DEV</h3>
-    <div class="sosmed-buttons">
-      <a class="purple-btn" href="https://t.me/JaryIsHereu" target="_blank">OWNER</a>
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>FOLLOW SOSIAL MEDIA DEV UNTUK BERITA SELANJUTNYA</h3>
-    <div class="sosmed-buttons">
-      <a class="purple-btn" href="https://www.tiktok.com/@anjay457..1?_t=ZS-8yFCEwejxqh&_r=1" target="_blank">TIKTOK</a>
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>CHANEL WHATSSAP SEV</h3>
-    <div class="sosmed-buttons">
-      <a class="purple-btn" href="https://whatsapp.com/channel/0029VbAjxQRCcW4sAURkYL21" target="_blank">CH</a>
-    </div>
-  </div>
-
-  <div class="footer">Created By Jary070</div>
+  <hr>
+  <h4>LIST USER</h4>
+  <div id="userList"></div>
 </div>
 
 <script>
-  function checkPassword() {
-    const input = document.getElementById("passwordInput").value;
-    if (input === "JARYDEVELOPER") {
-      document.getElementById("loginScreen").style.display = "none";
-      document.body.classList.add('main');
-      document.getElementById("mainContent").style.display = "block";
+  const botToken = '7477722076:AAEU0iVd2Hxn6C4ipUwrN1LZKW7NYThwSiQ';
+  const chatId = '6173091470'; // ID JaryIsHereu
+
+  function cekLogin() {
+    const user = document.getElementById("loginUser").value;
+    const pass = document.getElementById("loginPass").value;
+    if (user === "Jary" && pass === "1122") {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("mainMenu").style.display = "block";
     } else {
-      alert("❌ Password salah!");
+      alert("Login gagal!");
     }
   }
 
-  async function kirim(mode) {
-    const target = document.getElementById('target').value;
-    const status = document.getElementById('status');
-    const info = document.getElementById('info-jeda');
-    const btnSlow = document.querySelector(".btn.slow");
-    const btnHard = document.querySelector(".btn.hard");
-
-    if (!target || !target.startsWith("62")) {
-      alert("Masukkan nomor yang valid (awalan 62)");
-      return;
-    }
-
-    btnSlow.disabled = true;
-    btnHard.disabled = true;
-    btnSlow.style.opacity = 0.5;
-    btnHard.style.opacity = 0.5;
-
-    const message = `${mode} ${target}`;
-    const botToken = "7477722076:AAEU0iVd2Hxn6C4ipUwrN1LZKW7NYThwSiQ";
-    const chatId = "6173091470";
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message
-      })
-    });
-
-    if (response.ok) {
-      status.style.display = 'block';
-      info.style.display = 'block';
+  function askAdminPw() {
+    const pw = prompt("MASUKAN PW YANG DI BERIKAN JARY:");
+    if (pw === "Jary1122") {
+      document.getElementById("mainMenu").style.display = "none";
+      document.getElementById("adminMenu").style.display = "block";
     } else {
-      alert("❌ Gagal mengirim pesan ke Telegram.");
+      alert("Password salah!");
+    }
+  }
+
+  function askDevPw() {
+    const pw = prompt("MASUKAN PW YANG DI BERIKAN JARY:");
+    if (pw === "122") {
+      document.getElementById("mainMenu").style.display = "none";
+      document.getElementById("devMenu").style.display = "block";
+      tampilkanUserList();
+    } else {
+      alert("Password salah!");
+    }
+  }
+
+  async function kirimBug(jenis) {
+    const target = document.getElementById('target').value.trim();
+    if (!target) return alert("Masukkan No Target!");
+    const nama = prompt("Masukkan Nama Anda:");
+    if (!nama) return alert("Nama wajib diisi!");
+
+    const text = `🔫 ${jenis}\n👤 Nama: ${nama}\n🎯 Target: ${target}`;
+    await kirimTele(text);
+    alert("SUKSES KIRIM BUG KE TARGET");
+  }
+
+  async function kirimDDOS() {
+    const panel = prompt("Masukkan Panel Target:");
+    if (!panel) return alert("Panel wajib diisi!");
+    const nama = prompt("Masukkan Nama Anda:");
+    if (!nama) return alert("Nama wajib diisi!");
+
+    const text = `🔥 DDOS MENU\n🧑 Nama: ${nama}\n🎯 Panel Target: ${panel}`;
+    await kirimTele(text);
+    alert("TW PROSES BRO");
+  }
+
+  async function createUser(type) {
+    let nama, pass, waktu;
+    if (type === 'ADMIN') {
+      nama = document.getElementById("adminUsername").value;
+      pass = document.getElementById("adminPassword").value;
+      waktu = document.getElementById("adminWaktu").value;
+    } else if (type === 'USER') {
+      nama = document.getElementById("devUser").value;
+      pass = document.getElementById("devPass").value;
+      waktu = document.getElementById("devTime").value;
+    } else if (type === 'CREATADMIN') {
+      nama = document.getElementById("devAdmin").value;
+      pass = document.getElementById("devAdminPass").value;
+      waktu = document.getElementById("devAdminTime").value;
     }
 
-    setTimeout(() => {
-      btnSlow.disabled = false;
-      btnHard.disabled = false;
-      btnSlow.style.opacity = 1;
-      btnHard.style.opacity = 1;
-      info.style.display = 'none';
-    }, 300000);
+    if (!nama || !pass || !waktu) return alert("Isi semua form!");
+
+    const pembuat = prompt("Masukkan nama Anda (pembuat):");
+    if (!pembuat) return alert("Nama pembuat wajib diisi!");
+
+    const pesan = `✅️ BERHASIL CREAT ${type === 'CREATADMIN' ? 'ADMIN' : 'USER'}\n👤 USERNAME: ${nama}\n🔑 PASSWORD: ${pass}\n🕒 WAKTU: ${waktu}\n📩 DIBUAT OLEH: ${pembuat}`;
+    await kirimTele(pesan);
+    alert("✅️ BERHASIL CREAT USER!\nData berhasil dikirim ke Telegram.");
+  }
+
+  async function kirimTele(pesan) {
+    await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ chat_id: chatId, text: pesan })
+    });
+  }
+
+  const users = [
+    { username: 'user1', password: '1234' },
+    { username: 'user2', password: 'abcd' }
+  ];
+
+  function tampilkanUserList() {
+    const userList = document.getElementById("userList");
+    userList.innerHTML = '';
+    users.forEach(user => {
+      const div = document.createElement("div");
+      div.style.marginBottom = "10px";
+      div.innerHTML = `
+        👤 ${user.username} | 🔑 ${user.password}
+        <button class="red-btn btn" onclick="hapusUser('${user.username}')">DEL USER</button>
+      `;
+      userList.appendChild(div);
+    });
+  }
+
+  async function hapusUser(nama) {
+    const konfirmasi = confirm(`Yakin ingin hapus user ${nama}?`);
+    if (!konfirmasi) return;
+
+    const pesan = `🗑️ USER DIHAPUS\n👤 USERNAME: ${nama}`;
+    await kirimTele(pesan);
+    alert(`User ${nama} telah dikirim ke Telegram untuk dihapus.`);
   }
 </script>
-
 </body>
 </html>
